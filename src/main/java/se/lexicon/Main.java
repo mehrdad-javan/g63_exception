@@ -1,10 +1,11 @@
 package se.lexicon;
 
-import java.io.BufferedReader;
+import se.lexicon.exception.ExceptionHandler;
+import se.lexicon.model.BankAccount;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.*;
-import java.sql.DriverManager;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -76,7 +77,16 @@ public class Main {
 
         // readImageAndCopy();
 
-        writeTextToFile();
+        // writeTextToFile();
+
+        try {
+            BankAccount account = new BankAccount(1001, 100);
+            account.deposit(-50);
+            account.withdraw(350);
+            IO.println(account);
+        } catch (Exception e) {
+            ExceptionHandler.handle(e);
+        }
 
 
     }
